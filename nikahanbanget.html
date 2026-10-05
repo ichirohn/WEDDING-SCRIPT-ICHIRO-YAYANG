@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Pernikahan - Ichiro & Yayang</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Alpine.js untuk interaktivitas -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        .font-wedding { font-family: 'Great Vibes', cursive; }
+        .font-sans { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-stone-50 text-stone-800 font-sans antialiased" x-data="{ open: false, audioPlaying: false, copied1: false, copied2: false }">
+
+    <!-- Cover Overlay -->
+    <div x-show="!open" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-stone-900 text-white text-center p-6 bg-cover bg-center" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80');">
+        <p class="text-sm uppercase tracking-widest text-amber-200 mb-2">The Wedding Of</p>
+        <h1 class="font-wedding text-6xl md:text-8xl text-amber-100 mb-4">Ichiro & Yayang</h1>
+        <p class="text-stone-300 text-sm mb-8">Kepada Yth. Bapak/Ibu/Saudara/i</p>
+        <button @click="open = true; $refs.audio.play(); audioPlaying = true" class="px-6 py-3 bg-amber-600 hover:bg-amber-700 text-white font-medium rounded-full shadow-lg transition transform hover:scale-105">
+            Buka Undangan
+        </button>
+    </div>
+
+    <!-- Audio Player -->
+    <audio x-ref="audio" loop src="lagu.mp3"></audio>
+
+    <!-- Main Content -->
+    <main x-show="open" x-transition.opacity.duration.1000ms class="max-w-md mx-auto bg-white min-h-screen shadow-2xl relative pb-20">
+        
+        <!-- Hero Section -->
+        <section class="h-screen flex flex-col items-center justify-center text-center p-6 bg-amber-50/50 border-b border-amber-100">
+            <p class="text-xs uppercase tracking-widest text-amber-800 mb-2">Walimatul 'Ursy</p>
+            <h1 class="font-wedding text-5xl text-amber-900 mb-4">Ichiro & Yayang</h1>
+            <p class="text-stone-600 text-sm mb-6">Minggu, 20 Desember 2026</p>
+        </section>
+
+        <!-- Ayat / Kutipan -->
+        <section class="p-8 text-center bg-stone-50 border-b border-stone-100">
+            <p class="text-xs text-stone-500 italic leading-relaxed">
+                "Dan segala sesuatu Kami ciptakan berpasang-pasangan agar kamu mengingat (kebesaran Allah)."
+            </p>
+            <span class="block mt-2 text-xs font-semibold text-amber-800">(QS. Az-Zariyat: 49)</span>
+        </section>
+
+        <!-- Mempelai -->
+        <section class="p-8 text-center space-y-8">
+            <div>
+                <h2 class="font-wedding text-4xl text-amber-900 mb-1">Muhammad Ichiro Lagampung</h2>
+                <p class="text-xs text-stone-500">Putra dari Bapak Sendi Lagampung & Ibu Yuning Widhiyastuti</p>
+            </div>
+            <div class="font-wedding text-3xl text-amber-700">&</div>
+            <div>
+                <h2 class="font-wedding text-4xl text-amber-900 mb-1">Yayang Saidah</h2>
+                <p class="text-xs text-stone-500">Putri dari Bapak Slamet Sunarso & Ibu Hidayatus Salamah</p>
+            </div>
+        </section>
+
+        <!-- Acara / Event -->
+        <section class="p-8 bg-amber-900 text-amber-50 text-center space-y-6 rounded-t-3xl">
+            <h3 class="font-wedding text-4xl text-amber-200">Rangkaian Acara</h3>
+            
+            <div class="bg-amber-800/50 p-4 rounded-xl border border-amber-700">
+                <h4 class="font-bold text-amber-200 uppercase tracking-wider text-xs mb-1">Akad Nikah</h4>
+                <p class="text-sm">08:00 - 09:00 WIB</p>
+                <p class="text-xs text-amber-300 mt-2">GOR Neglasari Kota Tangerang</p>
+            </div>
+
+            <div class="bg-amber-800/50 p-4 rounded-xl border border-amber-700">
+                <h4 class="font-bold text-amber-200 uppercase tracking-wider text-xs mb-1">Resepsi</h4>
+                <p class="text-sm">09:00 - 12:00 WIB</p>
+                <p class="text-xs text-amber-300 mt-2">GOR Neglasari Kota Tangerang</p>
+            </div>
+        </section>
+
+        <!-- Lokasi Peta / Google Maps -->
+        <section class="p-8 bg-stone-50 border-b border-stone-200 text-center">
+            <h3 class="font-wedding text-4xl text-amber-900 mb-2">Lokasi Acara</h3>
+            <p class="text-xs text-stone-500 mb-4">GOR Neglasari, Kota Tangerang</p>
+            
+            <!-- Map Embed -->
+            <div class="w-full h-56 rounded-2xl overflow-hidden shadow-md border border-stone-300 mb-4">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.862369680371!2d106.6341235!3d-6.1491763!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6a0033ad1c16d5%3A0x6739bc44d0ba8405!2sGOR%20Neglasari!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+
+            <a href="https://maps.app.goo.gl/1Z3A4i9U" target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 bg-amber-800 hover:bg-amber-900 text-amber-50 text-xs font-semibold rounded-full shadow transition">
+                📍 Buka di Google Maps
+            </a>
+        </section>
+
+        <!-- Amplop Digital / Rekening BCA -->
+        <section class="p-8 bg-white text-center space-y-4">
+            <h3 class="font-wedding text-4xl text-amber-900 mb-2">Amplop Digital</h3>
+            <p class="text-xs text-stone-500 mb-6">Doa restu Anda adalah hadiah terindah. Bagi yang ingin memberikan tanda kasih, dapat menyalurkannya melalui:</p>
+            
+            <!-- Rekening 1: Ichiro -->
+            <div class="bg-amber-50/60 border border-amber-200 rounded-2xl p-5 shadow-sm space-y-4 text-left">
+                <div class="flex justify-between items-center border-b border-amber-200/60 pb-3">
+                    <!-- Logo BCA Resmi SVG -->
+                    <svg class="h-6" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 5C0 2.23858 2.23858 0 5 0H115C117.761 0 120 2.23858 120 5V35C120 37.7614 117.761 40 115 40H5C2.23858 40 0 37.7614 0 35V5Z" fill="#00529C"/>
+                        <path d="M18 10H38L32 30H12L18 10Z" fill="white"/>
+                        <path d="M25 15C25 13.8954 25.8954 13 27 13H33C34.1046 13 35 13.8954 35 15V17C35 18.1046 34.1046 19 33 19H27C25.8954 19 25 18.1046 25 17V15Z" fill="#00529C"/>
+                        <path d="M22 23C22 21.8954 22.8954 21 24 21H30C31.1046 21 32 21.8954 32 23V25C32 26.1046 31.1046 27 30 27H24C22.8954 27 22 26.1046 22 25V23Z" fill="#00529C"/>
+                        <text x="44" y="27" fill="white" font-family="Arial, sans-serif" font-size="20" font-weight="bold" letter-spacing="1">BCA</text>
+                    </svg>
+                    <span class="text-xs font-semibold text-amber-900 tracking-wider">Bank BCA</span>
+                </div>
+                
+                <div>
+                    <p class="text-[10px] uppercase text-stone-400 font-bold tracking-widest">Nomor Rekening</p>
+                    <p class="text-xl font-mono font-bold text-stone-800 tracking-wider">1234567890</p>
+                    <p class="text-xs text-stone-600 mt-1">a.n <span class="font-semibold text-amber-900">Muhammad Ichiro Lagampung</span></p>
+                </div>
+
+                <button @click="navigator.clipboard.writeText('1234567890'); copied1 = true; setTimeout(() => copied1 = false, 2000)" 
+                        class="w-full py-2 bg-amber-800 hover:bg-amber-900 text-amber-50 text-xs font-semibold rounded-lg transition shadow-sm flex items-center justify-center gap-1">
+                    <span x-text="copied1 ? '✓ No. Rekening Disalin!' : '📋 Salin Rekening Ichiro'"></span>
+                </button>
+            </div>
+
+            <!-- Rekening 2: Yayang Saidah -->
+            <div class="bg-amber-50/60 border border-amber-200 rounded-2xl p-5 shadow-sm space-y-4 text-left">
+                <div class="flex justify-between items-center border-b border-amber-200/60 pb-3">
+                    <!-- Logo BCA Resmi SVG -->
+                    <svg class="h-6" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 5C0 2.23858 2.23858 0 5 0H115C117.761 0 120 2.23858 120 5V35C120 37.7614 117.761 40 115 40H5C2.23858 40 0 37.7614 0 35V5Z" fill="#00529C"/>
+                        <path d="M18 10H38L32 30H12L18 10Z" fill="white"/>
+                        <path d="M25 15C25 13.8954 25.8954 13 27 13H33C34.1046 13 35 13.8954 35 15V17C35 18.1046 34.1046 19 33 19H27C25.8954 19 25 18.1046 25 17V15Z" fill="#00529C"/>
+                        <path d="M22 23C22 21.8954 22.8954 21 24 21H30C31.1046 21 32 21.8954 32 23V25C32 26.1046 31.1046 27 30 27H24C22.8954 27 22 26.1046 22 25V23Z" fill="#00529C"/>
+                        <text x="44" y="27" fill="white" font-family="Arial, sans-serif" font-size="20" font-weight="bold" letter-spacing="1">BCA</text>
+                    </svg>
+                    <span class="text-xs font-semibold text-amber-900 tracking-wider">Bank BCA</span>
+                </div>
+                
+                <div>
+                    <p class="text-[10px] uppercase text-stone-400 font-bold tracking-widest">Nomor Rekening</p>
+                    <p class="text-xl font-mono font-bold text-stone-800 tracking-wider">0987654321</p>
+                    <p class="text-xs text-stone-600 mt-1">a.n <span class="font-semibold text-amber-900">Yayang Saidah</span></p>
+                </div>
+
+                <button @click="navigator.clipboard.writeText('0987654321'); copied2 = true; setTimeout(() => copied2 = false, 2000)" 
+                        class="w-full py-2 bg-amber-800 hover:bg-amber-900 text-amber-50 text-xs font-semibold rounded-lg transition shadow-sm flex items-center justify-center gap-1">
+                    <span x-text="copied2 ? '✓ No. Rekening Disalin!' : '📋 Salin Rekening Yayang'"></span>
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+</body>
+</html>
